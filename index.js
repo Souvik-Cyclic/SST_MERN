@@ -40,16 +40,14 @@ mongoose
   const productModel = mongoose.model('products', ProductSchema)
 
   app.post("/api/products", async (req, res) => {
-    const body = req.body;
-
-    const product = productModel.create({
+    productModel.create({
       product_name: req.body.product_name,
       product_price: req.body.product_price,
       isInStock: req.body.isInStock,
       category: req.body.category,
     });
 
-    console.log(product);
+    // console.log(product);
 
     return res.status(201).json({ message: "Product Created" });
   });
