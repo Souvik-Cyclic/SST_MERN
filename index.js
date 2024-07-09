@@ -16,65 +16,6 @@ mongoose
     console.log("DB Connection Failed", err);
   });
 
-// Product Schema
-const ProductSchema = new mongoose.Schema({
-  product_name: {
-    type: String,
-    required: true,
-  },
-  product_price: {
-    type: String,
-    required: true,
-  },
-  isInStock: {
-    type: Boolean,
-    required: true,
-  },
-  category: {
-    type: String,
-    required: true,
-  },
-});
-
-const productModel = mongoose.model("products", ProductSchema);
-
-// post
-app.post("/api/products", async (req, res) => {
-  productModel.create({
-    product_name: req.body.product_name,
-    product_price: req.body.product_price,
-    isInStock: req.body.isInStock,
-    category: req.body.category,
-  });
-  return res.status(201).json({ message: "Product Created" });
-});
-
-// get
-app.get("/api/products", async (req, res) => {
-  const allProducts = await productModel.find({})
-
-  return res.json(allProducts);
-})
-
-// get product by id
-app.get("/api/products/:id", async (req, res) => {
-  const product = await productModel.findById(req.params.id);
-
-  return res.json(product);
-})
-
-// update product
-app.put("/api/products/:id", async (req, res) => {
-  const updatedProduct = await productModel.findByIdAndUpdate(req.params.id, req.body)
-  return res.json(updatedProduct)
-})
-
-// delete
-app.delete("/api/products/:id", async (req, res) => {
-  const deletedProduct = await productModel.findByIdAndDelete(req.params.id);
-  res.json({message: "Product Deleted", deletedProduct});
-})
-
 app.listen(8086, () => {
   console.log("Server started at port 8086");
 });
