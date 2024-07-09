@@ -13,7 +13,7 @@ mongoose
     console.log("DB Connected");
   })
   .catch((err) => {
-    console.log("Failed", err);
+    console.log("DB Connection Failed", err);
   });
 
 // Product Schema
