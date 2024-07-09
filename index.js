@@ -63,6 +63,12 @@ app.get("/api/products/:id", async (req, res) => {
   return res.json(product);
 })
 
+// update product
+app.put("/api/products/:id", async (req, res) => {
+  const updatedProduct = await productModel.findByIdAndUpdate(req.params.id, req.body)
+  return res.json(updatedProduct)
+})
+
 app.listen(8086, () => {
   console.log("Server started at port 8086");
 });
