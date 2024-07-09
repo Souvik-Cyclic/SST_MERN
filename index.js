@@ -69,6 +69,12 @@ app.put("/api/products/:id", async (req, res) => {
   return res.json(updatedProduct)
 })
 
+// delete
+app.delete("/api/products/:id", async (req, res) => {
+  const deletedProduct = await productModel.findByIdAndDelete(req.params.id);
+  res.json({message: "Product Deleted", deletedProduct});
+})
+
 app.listen(8086, () => {
   console.log("Server started at port 8086");
 });
