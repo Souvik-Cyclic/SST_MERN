@@ -3,16 +3,18 @@ const router = require("express").Router();
 const productControllers = require("../controllers/productControllers");
 
 // post
-router.post("/api/products", productControllers.createProduct);
+router.post("/", productControllers.createProduct);
 
 // get
-router.get("/api/products", productControllers.getAllProducts);
+router.get("/", productControllers.getAllProducts);
 
 // get product by id
-router.get("/api/products/:id", productControllers.getById);
+router.get("/:id", productControllers.getById);
 
 // update product
-router.put("/api/products/:id", productControllers.updateProduct);
+router.put("/:id", productControllers.updateProduct);
 
 // delete
-router.delete("/api/products/:id", productControllers.deleteProduct);
+router.delete("/:id", productControllers.deleteProduct);
+
+module.exports = router

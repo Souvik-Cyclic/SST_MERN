@@ -1,8 +1,8 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require("dotenv").config();
-
 const app = express();
+require("dotenv").config();
+const productRoutes = require("./routes/productRoutes");
 
 // middleware
 app.use(express.json());
@@ -19,3 +19,5 @@ mongoose
 app.listen(8086, () => {
   console.log("Server started at port 8086");
 });
+
+app.use("/api/products", productRoutes);
