@@ -1,4 +1,3 @@
-const express = require("express");
 const router = require("express").Router();
 const productControllers = require("../controllers/productControllers");
 
@@ -17,4 +16,4 @@ router.put("/:id", productControllers.updateProduct);
 // delete
 router.delete("/:id", productControllers.deleteProduct);
 
-module.exports = router
+module.exports = router;
